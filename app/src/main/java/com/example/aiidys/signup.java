@@ -7,14 +7,16 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class signup extends AppCompatActivity {
 
-    EditText nameEditText, emailEditText, numberEditText, passEditText, cpassEditText;
+    EditText nameEditText, emailEditText, usernameEditText, passEditText, cpassEditText;
     Button button;
+    DBHelper DB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,24 +25,27 @@ public class signup extends AppCompatActivity {
 
         nameEditText =(EditText)  findViewById(R.id.name);
         emailEditText =(EditText) findViewById(R.id.email);
-        numberEditText =(EditText) findViewById(R.id.number);
+        usernameEditText =(EditText) findViewById(R.id.username);
         passEditText =(EditText) findViewById(R.id.pass);
         cpassEditText =(EditText) findViewById(R.id.cpass);
         button = (Button) findViewById(R.id.button);
+        DB = new DBHelper(this);
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 registerNewUser();
             }
+
         });
     }
     private void registerNewUser() {
         final String name = nameEditText.getText().toString().trim();
-        final String phone = numberEditText.getText().toString().trim();
+        final String username = usernameEditText.getText().toString().trim();
         final String email = emailEditText.getText().toString().trim();
         final String pass = passEditText.getText().toString().trim();
         final String confirmPass = cpassEditText.getText().toString().trim();
+
 
         // Validate name
         if (name.isEmpty()) {
@@ -50,14 +55,9 @@ public class signup extends AppCompatActivity {
         }
 
         // Validate phone number
-        if (phone.isEmpty()) {
-            numberEditText.setError("Please enter your phone number.");
-            numberEditText.requestFocus();
-            return;
-        }
-        if (phone.length() != 10) {
-            numberEditText.setError("Please enter a valid phone number.");
-            numberEditText.requestFocus();
+        if (username.isEmpty()) {
+            usernameEditText.setError("Please enter your username.");
+            usernameEditText.requestFocus();
             return;
         }
 
@@ -79,6 +79,9 @@ public class signup extends AppCompatActivity {
             passEditText.requestFocus();
             return;
         }
+
+
+
         if (!isValidPassword(pass)) {
             passEditText.setError("Password must contain at least one capital letter, one small letter, one number, and one symbol.");
             passEditText.requestFocus();
@@ -97,7 +100,19 @@ public class signup extends AppCompatActivity {
             return;
         }
 
+        Boolean checkuser = DB.checkusername(username);
+        if (checkuser == false){
+            Boolean insert = DB.insertData(username, pass);
+            if(insert == true){
+                Toast.makeText(signup.this, "Registered Successfully", Toast.LENGTH_SHORT).show();
+            }else{
+                Toast.makeText(signup.this, "Registration Failed", Toast.LENGTH_SHORT).show();
+            }
 
+
+
+
+    }
 
 
 
