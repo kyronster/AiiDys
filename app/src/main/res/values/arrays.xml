@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="font_names">
+        <item>Default Font</item>
+        <item>VinaSans</item>
+        <item>Quicksand</item>
+        <!-- Add more fonts as needed -->
+    </string-array>
+
+    <string-array name="font_values">
+        <item>default_font</item>
+        <item>vinasans.ttf</item>
+        <item>quicksandbold.ttf</item>
+        <!-- Add corresponding font file names as values -->
+    </string-array>
+</resources>

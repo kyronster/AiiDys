@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ListPreference
+        android:key="font_preference"
+        android:title="Choose Font"
+        android:summary="Select your preferred font"
+        android:defaultValue="default_font"
+        android:entries="@array/font_names"
+        android:entryValues="@array/font_values" />
+
+
+</PreferenceScreen>

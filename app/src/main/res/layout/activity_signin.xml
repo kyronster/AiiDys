@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/peach"
     android:orientation="vertical">
 
     <LinearLayout
@@ -31,7 +31,7 @@
             android:id="@+id/bottom"
             android:layout_width="match_parent"
             android:layout_height="512dp"
-            android:background="@color/white"
+            android:background="@color/peach"
             android:orientation="vertical">
 
 
@@ -39,6 +39,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
+                android:background="@color/peach"
                 android:padding="40dp">
 
                 <TextView
@@ -142,6 +143,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingLeft="40dp"
+                android:background="@color/peach"
                 android:paddingRight="40dp">
 
 
